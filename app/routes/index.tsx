@@ -18,10 +18,10 @@ export default function Index() {
               </div>
             </div>
             <div className="text-7xl max-w-3xl mb-8 leading-tight">
-              Your founding engineering team
+              Your Founding Engineering Team
             </div>
             <div className="text-gray-600 text-lg mb-8">
-              We build ideas to products real good boss. LFG.
+              We build your business with you
             </div>
             <div>
               <button className="bg-brand-dark py-3 px-6 text-center text-white font-bold text-lg">
@@ -61,11 +61,14 @@ export default function Index() {
               </div>
             </div>
             <div className="m-auto max-w-xl  py-8 flex">
-              <div className="flex-grow">Startup.Dev</div>
+              <div className="flex-grow">Startup Dev Worldwide</div>
               <div className="flex">
-                <div className="mr-2">GH</div>
+                <div className="mr-2">
+                  <img src="/images/github.svg" alt="Github" />
+                </div>
                 <div className="mr-2">TW</div>
-                <div>LI</div>
+                <div className="mr-2">LI</div>
+                <div className="">{new Date().getFullYear()}W</div>
               </div>
             </div>
           </div>
