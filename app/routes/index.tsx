@@ -47,7 +47,7 @@ export default function Index() {
         >
           <div>
             <div className="w-128 border-b border-b-gray-200 py-8 w-96">
-              <div className="text-6xl mb-12">Get in touch</div>
+              <div className="text-6xl mb-12">Get in Touch</div>
               <div className="mb-4">
                 <input
                   className="bg-gray-100 border border-gray-200 rounded py-4 px-4 mb-3 w-full"
