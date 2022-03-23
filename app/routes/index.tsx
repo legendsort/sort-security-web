@@ -6,27 +6,35 @@ export default function Index() {
     <div>
       <Menu />
       <Slide>
-        <div className="m-auto max-w-5xl py-24">
-          <div className="m-auto max-w-5xl ">
-            <div className="flex mb-24">
-              <div className="flex-grow">
-                <img
-                  className="w-56"
-                  src="/images/logo.svg"
-                  alt="Startup Dev"
-                />
+        <div
+          className="bg-cover h-screen"
+          style={{
+            backgroundImage:
+              "url(https://images.unsplash.com/photo-1533497016719-cb32082a2338?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1772&q=80)",
+          }}
+        >
+          <div className="m-auto max-w-5xl py-24">
+            <div className="m-auto max-w-5xl ">
+              <div className="flex mb-24">
+                <div className="flex-grow">
+                  <img
+                    className="w-56"
+                    src="/images/logo.svg"
+                    alt="Startup Dev"
+                  />
+                </div>
               </div>
-            </div>
-            <div className="text-7xl max-w-3xl mb-8 leading-tight">
-              Your Founding Engineering Team
-            </div>
-            <div className="text-gray-600 text-lg mb-8">
-              We build your business with you
-            </div>
-            <div>
-              <button className="bg-brand-dark py-3 px-6 text-center text-white font-bold text-lg">
-                Let's Talk
-              </button>
+              <div className="text-7xl max-w-3xl mb-8 leading-tight">
+                Your Founding Engineering Team
+              </div>
+              <div className="text-gray-600 text-lg mb-8">
+                We build your business with you
+              </div>
+              <div>
+                <button className="bg-brand-dark py-3 px-6 text-center text-white font-bold text-lg">
+                  Let's Talk
+                </button>
+              </div>
             </div>
           </div>
         </div>
