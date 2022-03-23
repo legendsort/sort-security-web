@@ -64,11 +64,15 @@ export default function Index() {
               <div className="flex-grow">Startup Dev Worldwide</div>
               <div className="flex">
                 <div className="mr-2">
-                  <img src="/images/github.svg" alt="Github" />
+                  <img className="w-6" src="/images/github.svg" />
                 </div>
-                <div className="mr-2">TW</div>
-                <div className="mr-2">LI</div>
-                <div className="">{new Date().getFullYear()}W</div>
+                <div className="mr-2">
+                  <img className="w-6" src="/images/twitter.svg" />
+                </div>
+                <div className="mr-2">
+                  <img className="w-6" src="/images/linkedin.svg" />
+                </div>
+                <div>{new Date().getFullYear()}</div>
               </div>
             </div>
           </div>
