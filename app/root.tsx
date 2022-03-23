@@ -10,7 +10,7 @@ import type { MetaFunction, LinksFunction } from "remix";
 
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
-  title: "New Remix App",
+  title: "Startup Dev | Founding Engineering",
   viewport: "width=device-width,initial-scale=1",
 });
 
