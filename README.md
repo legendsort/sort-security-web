@@ -1,5 +1,9 @@
 # Welcome to Remix!
 
+## Project details
+
+Figma: https://www.figma.com/file/86PcKEPpDAVEAZc4iDkul8/Untitled?node-id=0%3A1
+
 - [Remix Docs](https://remix.run/docs)
 
 ## Deployment
