@@ -13,10 +13,10 @@ export default function Index() {
           </div>
         </div>
         <div className="text-7xl max-w-3xl mb-8 leading-tight">
-          Your founding engineering team
+          Your Founding Engineering Team
         </div>
         <div className="text-gray-600 text-lg mb-8">
-          We build ideas to products real good boss. LFG.
+          We build your business with you
         </div>
         <div>
           <button className="bg-brand-dark py-3 px-6 text-center text-white font-bold text-lg">
@@ -58,11 +58,11 @@ export default function Index() {
       <div className="">
         <div className="m-auto max-w-5xl border-t border-t-gray-200 py-8">
           <div className="flex">
-            <div className="flex-grow">Startup.Dev</div>
+            <div className="flex-grow">Startup Dev Worldwide</div>
             <div className="flex">
-              <div className="mr-2">GH</div>
-              <div className="mr-2">TW</div>
-              <div>LI</div>
+              <div className="mr-2"></div>
+              <div className="mr-2"></div>
+              <div>{new Date().getFullYear()}</div>
             </div>
           </div>
         </div>
