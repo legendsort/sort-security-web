@@ -9,17 +9,16 @@ export default function Index() {
         <div
           className="bg-cover h-screen"
           style={{
-            backgroundImage:
-              "url(https://images.unsplash.com/photo-1533497016719-cb32082a2338?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1772&q=80)",
+            backgroundImage: "url(/images/bg-slide-building.jpg)",
           }}
         >
-          <div className="m-auto max-w-5xl py-24">
+          <div className="m-auto max-w-5xl p-12">
             <div className="m-auto max-w-5xl ">
               <div className="flex mb-24">
                 <div className="flex-grow">
                   <img
                     className="w-56"
-                    src="/images/logo.svg"
+                    src="/images/logo-startupdev.svg"
                     alt="Startup Dev"
                   />
                 </div>
@@ -27,11 +26,11 @@ export default function Index() {
               <div className="text-7xl max-w-3xl mb-8 leading-tight">
                 Your Founding Engineering Team
               </div>
-              <div className="text-gray-600 text-lg mb-8">
-                We build your business with you
+              <div className="text-lg mb-8">
+                We'll build your business as you do.
               </div>
               <div>
-                <button className="bg-brand-dark py-3 px-6 text-center text-white font-bold text-lg">
+                <button className="bg-brand-green py-3 px-6 text-center text-gray-600 font-bold text-lg">
                   Let's Talk
                 </button>
               </div>
@@ -40,9 +39,14 @@ export default function Index() {
         </div>
       </Slide>
       <Slide>
-        <div className="bg-gray-50 h-full">
-          <div className="m-auto max-w-5xl py-24">
-            <div className="text-lg uppercase font-bold text-gray-500 space-x-3">
+        <div
+          className="bg-cover h-screen"
+          style={{
+            backgroundImage: "url(/images/mk-s-wKS46KBpolg-unsplash.jpeg)",
+          }}
+        >
+          <div className="m-auto max-w-5xl p-12">
+            <div className="text-5xl uppercase font-bold text-white space-x-3">
               Trusted by
             </div>
           </div>
@@ -52,10 +56,15 @@ export default function Index() {
         <div
           className=" flex justify-center items-center h-screen w-full"
           id="contact"
+          style={{
+            backgroundImage: "url(/images/bg-slide3.jpg)",
+          }}
         >
           <div>
             <div className="w-128 border-b border-b-gray-200 py-8 w-96">
-              <div className="text-6xl mb-12">Get in Touch</div>
+              <div className="text-6xl mb-12 font-bold text-brand-green">
+                Get in Touch
+              </div>
               <div className="mb-4">
                 <input
                   className="bg-gray-100 border border-gray-200 rounded py-4 px-4 mb-3 w-full"
@@ -63,20 +72,27 @@ export default function Index() {
                 />
               </div>
               <div className="mb-12">
-                <button className="bg-brand-dark py-3 px-6 text-center text-white font-bold text-lg w-full">
-                  Contact
+                <button className="bg-brand-green py-3 px-6 text-center text-gray-600 font-bold text-lg w-full">
+                  Let's Go
                 </button>
               </div>
             </div>
             <div className="m-auto max-w-xl  py-8 flex">
-              <div className="flex-grow">Startup Dev Worldwide</div>
+              <div className="flex-grow"></div>
               <div className="flex">
                 <div className="mr-2">
-                  <img src="/images/github.svg" alt="Github" />
+                  <img className="w-6" src="/images/github.svg" alt="Github" />
                 </div>
-                <div className="mr-2">TW</div>
-                <div className="mr-2">LI</div>
-                <div className="">{new Date().getFullYear()}W</div>
+                <div className="mr-2">
+                  <a href="https://twitter.com/startupdotdev">
+                    <img className="w-6" src="/images/twitter.svg"></img>
+                  </a>
+                </div>
+                <div className="mr-2">
+                  <a href="https://www.linkedin.com/company/startup-dev/">
+                    <img className="w-6" src="/images/linkedin.svg"></img>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
