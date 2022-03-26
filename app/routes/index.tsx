@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import Menu from "~/components/menu";
 import Slide from "~/components/slide";
 
@@ -25,6 +27,12 @@ export async function action({ request }) {
 
 export default function Index() {
   const data = useActionData();
+  const [buttText, setButtText] = useState("Let's Go");
+
+  function but() {
+    setButtText("Thanks");
+  }
+
   return (
     <div>
       <Menu />
@@ -143,12 +151,15 @@ export default function Index() {
                 />
               </div>
               <div className="">
-                <button className="bg-brand-green py-3 px-6 text-center text-gray-600 font-bold text-lg w-full">
-                  Let's Go
+                <button
+                  onClick={but}
+                  className="bg-brand-green py-3 px-6 text-center text-gray-600 font-bold text-lg w-full"
+                >
+                  {buttText}
                 </button>
               </div>
               {data?.errors?.email.map((e) => (
-                <div>boop</div>
+                <div>Enter an Address</div>
               ))}
             </div>
             <div className="m-auto max-w-xl  py-8 flex">
@@ -158,19 +169,24 @@ export default function Index() {
                   <a href="https://github.com/startupdotdev">
                     <img
                       className="w-6"
-                      src="/images/github.svg"
+                      src="/images/github.png"
                       alt="Github"
                     />
                   </a>
                 </div>
                 <div className="mr-2">
                   <a href="https://twitter.com/startupdotdev">
-                    <img className="w-6" src="/images/twitter.svg"></img>
+                    <img className="w-6" src="/images/twitter.png"></img>
                   </a>
                 </div>
                 <div className="mr-2">
                   <a href="https://www.linkedin.com/company/startup-dev/">
                     <img className="w-6" src="/images/linkedin.svg"></img>
+                  </a>
+                </div>
+                <div className="mr-2">
+                  <a href="https://discord.gg/9Hcnc9wrpk">
+                    <img className="w-6" src="/images/discord.png"></img>
                   </a>
                 </div>
               </div>
