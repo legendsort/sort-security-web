@@ -1,7 +1,30 @@
 import Menu from "~/components/menu";
 import Slide from "~/components/slide";
 
+import { Link, ActionFunction, json, useActionData, Form } from "remix";
+import { redirect } from "remix";
+import { createPreuser } from "~/lib/preusers";
+import { getEnv } from "~/config/env";
+
+export async function action({ request }) {
+  try {
+    const formData = await request.formData();
+    const { data, error } = await createPreuser(formData, getEnv());
+
+    if (error) {
+      return json(error);
+    } else {
+      return redirect(`/#contact`);
+    }
+    // TODO: errors
+  } catch (e) {
+    console.error("Failed to create", e);
+    return e;
+  }
+}
+
 export default function Index() {
+  const data = useActionData();
   return (
     <div>
       <Menu />
@@ -27,12 +50,12 @@ export default function Index() {
               <div className="text-7xl max-w-3xl mb-8 leading-tight">
                 Your Founding Engineering Team
               </div>
-              <div className="text-lg mb-8">
-                We'll build your business as you do.
+              <div className="text-2xl mb-8">
+                We'll build your business alongside you.
               </div>
-              <div>
-                <button className="bg-brand-green py-3 px-6 text-center text-gray-600 font-bold text-lg">
-                  Let's Talk
+              <div className="my-24">
+                <button className="border border-1 border-white py-3 px-6 text-center text-white font-bold text-lg">
+                  <a href="/#contact">Let's Talk</a>
                 </button>
               </div>
             </div>
@@ -47,41 +70,41 @@ export default function Index() {
               "url(/images/annie-spratt-6a3nqQ1YwBw-unsplash.jpeg)",
           }}
         >
-          <div className="m-auto max-w-5xl p-12">
-            <div className="text-3xl uppercase text-gray-400 space-x-3">
+          <div className="m-auto max-w-5xl py-24 px-12">
+            <div className="text-2xl uppercase text-gray-400 space-x-3 pb-12">
               Trusted by
             </div>
-            <div className="grid grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-24 py-24">
+            <div className="grid grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-24 pb-12 items-center opacity-80">
               <img
-                className="w-80 p-0"
+                className="p-4"
                 src="/images/trusted/white/logo-google1.svg"
               ></img>
               <img
-                className="w-80 p-0"
+                className="p-4"
                 src="/images/trusted/white/logo-youtube.svg"
               ></img>
               <img
-                className="w-80 p-0"
+                className="p-4"
                 src="/images/trusted/white/logo-facebook.svg"
               ></img>
               <img
-                className="w-80 p-0"
+                className="p-4"
                 src="/images/trusted/white/logo-ea.svg"
               ></img>
               <img
-                className="w-80 p-0"
+                className="p-4"
                 src="/images/trusted/white/logo-okta.svg"
               ></img>
               <img
-                className="w-80 p-0"
+                className="p-4"
                 src="/images/trusted/white/logo-envoy.svg"
               ></img>
               <img
-                className="w-80 p-0"
+                className="p-4"
                 src="/images/trusted/white/logo-hackerone.svg"
               ></img>
               <img
-                className="w-80 p-0"
+                className="p-4"
                 src="/images/trusted/white/logo-havo.svg"
               ></img>
             </div>
@@ -96,22 +119,37 @@ export default function Index() {
             backgroundImage: "url(/images/bg-slide3.jpg)",
           }}
         >
-          <div>
-            <div className="w-128 border-b border-b-gray-200 py-8 w-96">
-              <div className="text-6xl mb-12 font-bold text-brand-green">
+          <form
+            method="POST"
+            action="/?index#contact"
+            className="flex flex-col w-full max-w-lg"
+          >
+            {data?.error && (
+              <div className=" py-2 px-6 text-white bg-yellow-500 mb-3">
+                Strange Occurence
+              </div>
+            )}
+
+            <div className="w-256 bg-black p-12 pt-12 pb-12">
+              <div className="text-6xl mb-12 font-bold text-white">
                 Get in Touch
               </div>
               <div className="mb-4">
                 <input
                   className="bg-gray-100 border border-gray-200 rounded py-4 px-4 mb-3 w-full text-gray-800"
+                  name="email"
+                  type="text"
                   placeholder="Your email address"
                 />
               </div>
-              <div className="mb-12">
+              <div className="">
                 <button className="bg-brand-green py-3 px-6 text-center text-gray-600 font-bold text-lg w-full">
                   Let's Go
                 </button>
               </div>
+              {data?.errors?.email.map((e) => (
+                <div>boop</div>
+              ))}
             </div>
             <div className="m-auto max-w-xl  py-8 flex">
               <div className="flex-grow"></div>
@@ -137,7 +175,7 @@ export default function Index() {
                 </div>
               </div>
             </div>
-          </div>
+          </form>
         </div>
       </Slide>
     </div>
