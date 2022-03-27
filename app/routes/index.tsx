@@ -139,13 +139,17 @@ export default function Index() {
               <div className="mb-4">
                 <input
                   className="bg-gray-100 border border-gray-200 rounded py-4 px-4 mb-3 w-full text-gray-800"
+                  disabled={data?.formMessage?.email ? true : false}
                   name="email"
                   type="text"
                   placeholder="Your email address"
                 />
               </div>
               <div className="">
-                <button className="bg-brand-green py-3 px-6 text-center text-gray-600 font-bold text-lg w-full">
+                <button
+                  className="bg-brand-green py-3 px-6 text-center text-gray-600 font-bold text-lg w-full"
+                  disabled={data?.formMessage?.email ? true : false}
+                >
                   {data?.formMessage?.email
                     ? data?.formMessage?.email
                     : "Let's Go"}
