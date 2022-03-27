@@ -6,7 +6,7 @@
 
 @layer components {
   body {
-    @apply text-gray-800;
+    @apply text-gray-200;
     font-family: "poppins", sans-serif;
   }
 }

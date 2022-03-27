@@ -6,7 +6,10 @@ import {
   Scripts,
   ScrollRestoration,
 } from "remix";
+
 import type { MetaFunction, LinksFunction } from "remix";
+
+import { Toaster } from "react-hot-toast";
 
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
