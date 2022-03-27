@@ -1,7 +1,12 @@
 import Menu from "~/components/menu";
 import Slide from "~/components/slide";
 
-import { Form, useActionData } from "remix";
+import { Form, useActionData, useTransition } from "remix";
+import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
+import clsx from "clsx";
+
+const SUCCESS_MESSAGE = "Thanks, We'll Reply Soon";
 
 const validateEmail = (email: string) => {
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
@@ -30,12 +35,21 @@ export async function action({ request }) {
     requestOptions
   );
 
-  formMessage = { email: "Thanks, We'll Reply Soon" };
+  formMessage = { email: SUCCESS_MESSAGE };
   return { formMessage };
 }
 
 export default function Index() {
   const data = useActionData();
+  const transition = useTransition();
+  const [hasSubmitted, setHasSubmitted] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (data?.formMessage?.email === SUCCESS_MESSAGE && !hasSubmitted) {
+      setHasSubmitted(true);
+      toast.success("Email submitted!");
+    }
+  }, [data?.formMessage?.email]);
 
   return (
     <div>
@@ -138,15 +152,31 @@ export default function Index() {
               </div>
               <div className="mb-4">
                 <input
-                  className="bg-gray-100 border border-gray-200 rounded py-4 px-4 mb-3 w-full text-gray-800"
+                  className={clsx(
+                    "bg-gray-100 border border-gray-200 rounded py-4 px-4 mb-3 w-full text-gray-800",
+                    {
+                      "opacity-40": hasSubmitted,
+                    }
+                  )}
+                  disabled={transition.state === "submitting" || hasSubmitted}
                   name="email"
                   type="text"
                   placeholder="Your email address"
                 />
               </div>
               <div className="">
-                <button className="bg-brand-green py-3 px-6 text-center text-gray-600 font-bold text-lg w-full">
-                  {data?.formMessage?.email
+                <button
+                  className={clsx(
+                    "bg-brand-green py-3 px-6 text-center text-gray-600 font-bold text-lg w-full",
+                    {
+                      "opacity-60": hasSubmitted,
+                    }
+                  )}
+                  disabled={transition.state === "submitting" || hasSubmitted}
+                >
+                  {transition.state === "submitting"
+                    ? "...Submitting"
+                    : data?.formMessage?.email
                     ? data?.formMessage?.email
                     : "Let's Go"}
                 </button>
