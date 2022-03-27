@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { toast } from "react-hot-toast";
 
 import Menu from "~/components/menu";
 import Slide from "~/components/slide";
@@ -16,7 +17,7 @@ export async function action({ request }) {
     if (error) {
       return json(error);
     } else {
-      return redirect(`/#contact`);
+      return json(data);
     }
     // TODO: errors
   } catch (e) {
@@ -30,6 +31,7 @@ export default function Index() {
   const [buttText, setButtText] = useState("Let's Go");
 
   function but() {
+    toast("We'll Reply Soon");
     setButtText("Thanks");
   }
 

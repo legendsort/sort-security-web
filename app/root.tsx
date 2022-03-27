@@ -9,6 +9,8 @@ import {
 
 import type { MetaFunction, LinksFunction } from "remix";
 
+import { Toaster } from "react-hot-toast";
+
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
   title: "Startup Dev | Founding Engineering",
@@ -39,6 +41,7 @@ export default function App() {
         <Links />
       </head>
       <body>
+        <Toaster />
         <Outlet />
         <ScrollRestoration />
         <Scripts />
