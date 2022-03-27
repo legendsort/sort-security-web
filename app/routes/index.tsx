@@ -1,7 +1,7 @@
 import Menu from "~/components/menu";
 import Slide from "~/components/slide";
 
-import { json, Form, useActionData } from "remix";
+import { Form, useActionData } from "remix";
 
 const validateEmail = (email: string) => {
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
