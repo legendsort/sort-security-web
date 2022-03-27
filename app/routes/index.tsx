@@ -1,39 +1,41 @@
-import { useState } from "react";
-import { toast } from "react-hot-toast";
-
 import Menu from "~/components/menu";
 import Slide from "~/components/slide";
 
-import { Link, ActionFunction, json, useActionData, Form } from "remix";
-import { redirect } from "remix";
-import { createPreuser } from "~/lib/preusers";
-import { getEnv } from "~/config/env";
+import { json, Form, useActionData } from "remix";
+
+const validateEmail = (email: string) => {
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    return "Valid Email Please";
+  }
+};
 
 export async function action({ request }) {
-  try {
-    const formData = await request.formData();
-    const { data, error } = await createPreuser(formData, getEnv());
+  const data = await request.formData();
+  const email = data.get("email");
+  const leadText = "startup.dev: " + email;
 
-    if (error) {
-      return json(error);
-    } else {
-      return json(data);
-    }
-    // TODO: errors
-  } catch (e) {
-    console.error("Failed to create", e);
-    return e;
-  }
+  let formMessage = {
+    email: validateEmail(email),
+  };
+
+  if (Object.values(formMessage).some(Boolean)) return { formMessage };
+
+  const requestOptions = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ text: leadText }),
+  };
+  fetch(
+    "https://hooks.slack.com/services/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",
+    requestOptions
+  );
+
+  formMessage = { email: "Thanks, We'll Reply Soon" };
+  return { formMessage };
 }
 
 export default function Index() {
   const data = useActionData();
-  const [buttText, setButtText] = useState("Let's Go");
-
-  function but() {
-    toast("We'll Reply Soon");
-    setButtText("Thanks");
-  }
 
   return (
     <div>
@@ -129,17 +131,7 @@ export default function Index() {
             backgroundImage: "url(/images/bg-slide3.jpg)",
           }}
         >
-          <form
-            method="POST"
-            action="/?index#contact"
-            className="flex flex-col w-full max-w-lg"
-          >
-            {data?.error && (
-              <div className=" py-2 px-6 text-white bg-yellow-500 mb-3">
-                Strange Occurence
-              </div>
-            )}
-
+          <Form method="post" className="flex flex-col w-full max-w-lg">
             <div className="w-256 bg-black p-12 pt-12 pb-12">
               <div className="text-6xl mb-12 font-bold text-white">
                 Get in Touch
@@ -153,16 +145,12 @@ export default function Index() {
                 />
               </div>
               <div className="">
-                <button
-                  onClick={but}
-                  className="bg-brand-green py-3 px-6 text-center text-gray-600 font-bold text-lg w-full"
-                >
-                  {buttText}
+                <button className="bg-brand-green py-3 px-6 text-center text-gray-600 font-bold text-lg w-full">
+                  {data?.formMessage?.email
+                    ? data?.formMessage?.email
+                    : "Let's Go"}
                 </button>
               </div>
-              {data?.errors?.email.map((e) => (
-                <div>Enter an Address</div>
-              ))}
             </div>
             <div className="m-auto max-w-xl  py-8 flex">
               <div className="flex-grow"></div>
@@ -193,7 +181,7 @@ export default function Index() {
                 </div>
               </div>
             </div>
-          </form>
+          </Form>
         </div>
       </Slide>
     </div>
