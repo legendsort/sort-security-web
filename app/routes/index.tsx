@@ -68,16 +68,16 @@ export default function Index() {
                 <div className="flex-grow">
                   <img
                     className="w-56"
-                    src="/images/logo-startupdev.svg"
-                    alt="Startup Dev"
+                    src="/images/logo.svg"
+                    alt="0xMidnight"
                   />
                 </div>
               </div>
               <div className="text-4xl lg:text-7xl max-w-3xl mb-8 leading-tight">
-                Your Founding Engineering Team
+                The first security team you need
               </div>
               <div className="text-2xl mb-6">
-                We'll build your business alongside you.
+                Protect the users you've worked to aquire
               </div>
               <div className="mb-12 md:mb-24">
                 <button className="border border-1 border-white py-3 px-6 text-center text-white font-bold text-lg">
@@ -140,14 +140,12 @@ export default function Index() {
       </Slide>
       <Slide>
         <div
-          className=" flex justify-center items-center h-screen w-full"
+          className=" flex justify-center items-center h-screen w-full bg-brand-dark"
           id="contact"
-          style={{
-            backgroundImage: "url(/images/bg-slide3.jpg)",
-          }}
+          style={{}}
         >
           <Form method="post" className="flex flex-col w-full max-w-lg">
-            <div className="w-256 bg-black p-12 pt-12 pb-12">
+            <div className="w-256  p-12 pt-12 pb-12 bg-brand-dark">
               <div className="text-4xl md:text-6xl mb-12 font-bold text-white text-center">
                 Get in Touch
               </div>
@@ -168,7 +166,7 @@ export default function Index() {
               <div className="">
                 <button
                   className={clsx(
-                    "bg-brand-green py-3 px-6 text-center text-gray-600 font-bold text-lg w-full",
+                    "bg-brand py-3 px-6 text-center text-brand-light font-bold text-lg w-full",
                     {
                       "opacity-60": hasSubmitted,
                     }
