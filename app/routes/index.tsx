@@ -73,11 +73,11 @@ export default function Index() {
                   />
                 </div>
               </div>
-              <div className="text-4xl lg:text-7xl max-w-3xl mb-8 leading-tight">
-                The first security team you need
+              <div className="text-5xl lg:text-7xl max-w-3xl mb-8 leading-tight">
+                Have you built something worth stealing?
               </div>
-              <div className="text-2xl mb-6">
-                Protect the users you've worked to aquire
+              <div className="text-2xl mb-10">
+                We'll build a culture of security alongside your team.
               </div>
               <div className="mb-12 md:mb-24">
                 <button className="border border-1 border-white py-3 px-6 text-center text-white font-bold text-lg">
