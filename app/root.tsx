@@ -5,7 +5,12 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLocation,
 } from "remix";
+
+import * as Fathom from "fathom-client";
+
+import { useEffect, useState } from "react";
 
 import type { MetaFunction, LinksFunction } from "remix";
 
@@ -34,6 +39,23 @@ export const links: LinksFunction = () => [
 ];
 
 export default function App() {
+  let location = useLocation();
+
+  useEffect(() => {
+    // Initialize Fathom when the app loads
+    // Example: yourdomain.com
+    //  - Do not include https://
+    //  - This must be an exact match of your domain.
+    //  - If you're using www. for your domain, make sure you include that here.
+    Fathom.load("TAFNJQKE", {
+      includedDomains: ["zeroxmidnight.com"],
+    });
+  }, []);
+
+  useEffect(() => {
+    Fathom.trackPageview();
+  }, [location]);
+
   return (
     <html lang="en">
       <head>
