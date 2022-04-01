@@ -6,7 +6,11 @@
 
 @layer components {
   body {
-    @apply text-gray-200;
+    @apply text-gray-200 bg-brand-dark;
     font-family: "manrope", sans-serif;
+  }
+
+  .texxt {
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
   }
 }

@@ -48,8 +48,14 @@ export default function App() {
     //  - This must be an exact match of your domain.
     //  - If you're using www. for your domain, make sure you include that here.
     Fathom.load("TAFNJQKE", {
-      includedDomains: ["zeroxmidnight.com"],
+      includedDomains: [
+        "zeroxmidnight.com",
+        "www.zeroxmidnight.com",
+        "0xmidnight.com",
+        "www.0xmidnight.com",
+      ],
     });
+    Fathom.trackPageview();
   }, []);
 
   useEffect(() => {
