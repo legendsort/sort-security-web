@@ -207,15 +207,7 @@ export default function Index() {
                     </svg>
                   </a>
                 </div>
-                <div className="mr-4">
-                  <a href="https://github.com/startupdotdev">
-                    <img
-                      className="w-6"
-                      src="/images/github.png"
-                      alt="Github"
-                    />
-                  </a>
-                </div>
+
                 <div className="mr-4">
                   <a href="https://twitter.com/zeroxmidnight">
                     <img className="w-6" src="/images/twitter.png"></img>
