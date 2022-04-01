@@ -118,7 +118,7 @@ export default function Index() {
                 <img
                   src={l}
                   key={i}
-                  style={{ maxWidth: 200 }}
+                  style={{ maxWidth: 180 }}
                   className="p-4 text-current"
                 />
               ))}
