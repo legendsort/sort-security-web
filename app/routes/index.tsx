@@ -73,7 +73,7 @@ export default function Index() {
           }}
           id="top"
         >
-          <div className="m-auto max-w-5xl p-12">
+          <div className="m-auto max-w-5xl p-3 md:p-12">
             <div className="m-auto max-w-5xl ">
               <div className="flex mb-24">
                 <div className="flex-grow">
@@ -109,23 +109,18 @@ export default function Index() {
             boxShadow: "inset 0px 20px 10px -5px rgba(0, 0, 0, 0.15)",
           }}
         >
-          <div className="m-auto max-w-5xl py-24 px-12 relative">
-            <img
-              src="images/left-brace.svg"
-              className="absolute w-14"
-              style={{ top: 95, left: -100 }}
-            />
-            <img
-              src="images/right-brace.svg"
-              className="absolute w-14"
-              style={{ bottom: 95, right: -100 }}
-            />
+          <div className="m-auto max-w-5xl py-24 px-3 md:px-12 relative">
             <div className="text-2xl uppercase font-bold space-x-3 pb-12 text-gray-600">
               Trusted by
             </div>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-24 pb-12 items-center opacity-80">
-              {trustedBys.map((l) => (
-                <img src={l} className="p-4 text-current text-red-500" />
+              {trustedBys.map((l, i) => (
+                <img
+                  src={l}
+                  key={i}
+                  style={{ maxWidth: 200 }}
+                  className="p-4 text-current"
+                />
               ))}
             </div>
           </div>
