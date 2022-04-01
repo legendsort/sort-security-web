@@ -187,12 +187,12 @@ export default function Index() {
                   </a>
                 </div>
                 <div className="mr-4">
-                  <a href="https://twitter.com/startupdotdev">
+                  <a href="https://twitter.com/zeroxmidnight">
                     <img className="w-6" src="/images/twitter.png"></img>
                   </a>
                 </div>
                 <div className="mr-4">
-                  <a href="https://www.linkedin.com/company/startup-dev/">
+                  <a href="https://www.linkedin.com/company/0xmidnight">
                     <img className="w-6" src="/images/linkedin.svg"></img>
                   </a>
                 </div>
