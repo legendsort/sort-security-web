@@ -7,6 +7,6 @@
 @layer components {
   body {
     @apply text-gray-200;
-    font-family: "poppins", sans-serif;
+    font-family: "manrope", sans-serif;
   }
 }

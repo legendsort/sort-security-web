@@ -14,6 +14,17 @@ const validateEmail = (email: string) => {
   }
 };
 
+const trustedBys: string[] = [
+  "/images/semi-trusted/logo-google1.png",
+  "/images/semi-trusted/logo-youtube.png",
+  "/images/semi-trusted/logo-facebook.png",
+  "/images/semi-trusted/logo-ea.png",
+  "/images/semi-trusted/logo-okta.png",
+  "/images/semi-trusted/logo-envoy.png",
+  "/images/semi-trusted/logo-hackerone.png",
+  "/images/semi-trusted/logo-havo.png",
+];
+
 export async function action({ request }) {
   const data = await request.formData();
   const email = data.get("email");
@@ -58,7 +69,7 @@ export default function Index() {
         <div
           className="bg-cover h-screen"
           style={{
-            backgroundImage: "url(/images/bg-slide-building.jpg)",
+            backgroundImage: "url(/images/grid-red-40.jpg)",
           }}
           id="top"
         >
@@ -68,16 +79,17 @@ export default function Index() {
                 <div className="flex-grow">
                   <img
                     className="w-56"
-                    src="/images/logo.svg"
+                    src="/images/logo-2.svg"
                     alt="0xMidnight"
                   />
                 </div>
               </div>
               <div className="text-5xl lg:text-7xl max-w-3xl mb-8 leading-tight">
-                Have you built something worth stealing?
+                Security stance need an upgrade?
               </div>
               <div className="text-2xl mb-10">
-                We'll build a culture of security alongside your team.
+                We help Series A+ companies evolve their security process and
+                culture
               </div>
               <div className="mb-12 md:mb-24">
                 <button className="border border-1 border-white py-3 px-6 text-center text-white font-bold text-lg">
@@ -90,50 +102,31 @@ export default function Index() {
       </Slide>
       <Slide>
         <div
-          className="bg-cover h-cover"
+          className="bg-cover h-cover bg-bottom shadow-inner shadow-i"
           style={{
-            backgroundImage:
-              "url(/images/annie-spratt-6a3nqQ1YwBw-unsplash.jpeg)",
+            background: "#E6E6E6",
             minWidth: 320,
+            boxShadow: "inset 0px 20px 10px -5px rgba(0, 0, 0, 0.15)",
           }}
         >
-          <div className="m-auto max-w-5xl py-24 px-12">
-            <div className="text-2xl uppercase text-gray-400 space-x-3 pb-12">
+          <div className="m-auto max-w-5xl py-24 px-12 relative">
+            <img
+              src="images/left-brace.svg"
+              className="absolute w-14"
+              style={{ top: 95, left: -100 }}
+            />
+            <img
+              src="images/right-brace.svg"
+              className="absolute w-14"
+              style={{ bottom: 95, right: -100 }}
+            />
+            <div className="text-2xl uppercase font-bold space-x-3 pb-12 text-gray-600">
               Trusted by
             </div>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-24 pb-12 items-center opacity-80">
-              <img
-                className="p-4"
-                src="/images/trusted/white/logo-google1.svg"
-              ></img>
-              <img
-                className="p-4"
-                src="/images/trusted/white/logo-youtube.svg"
-              ></img>
-              <img
-                className="p-4"
-                src="/images/trusted/white/logo-facebook.svg"
-              ></img>
-              <img
-                className="p-4"
-                src="/images/trusted/white/logo-ea.svg"
-              ></img>
-              <img
-                className="p-4"
-                src="/images/trusted/white/logo-okta.svg"
-              ></img>
-              <img
-                className="p-4"
-                src="/images/trusted/white/logo-envoy.svg"
-              ></img>
-              <img
-                className="p-4"
-                src="/images/trusted/white/logo-hackerone.svg"
-              ></img>
-              <img
-                className="p-4"
-                src="/images/trusted/white/logo-havo.svg"
-              ></img>
+              {trustedBys.map((l) => (
+                <img src={l} className="p-4 text-current text-red-500" />
+              ))}
             </div>
           </div>
         </div>
