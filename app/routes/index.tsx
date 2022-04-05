@@ -39,7 +39,7 @@ export async function action({ request }) {
   const requestOptions = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ text: leadText }),
+    body: JSON.stringify({ text: `0XM: ${leadText}` }),
   };
   fetch(
     "https://hooks.slack.com/services/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",
