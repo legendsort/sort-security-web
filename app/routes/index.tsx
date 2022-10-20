@@ -1,10 +1,15 @@
 import Menu from "~/components/menu";
 import Slide from "~/components/slide";
+import { initializeApp } from "firebase/app";
 
-import { Form, useActionData, useTransition } from "remix";
+import { Form, useActionData, useTransition, useLocation } from "remix";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import clsx from "clsx";
+
+import { addSubmission } from "~/firebase/clientApp";
+
+import FingerprintJS from "@fingerprintjs/fingerprintjs-pro";
 
 const SUCCESS_MESSAGE = "Thanks, We'll Reply Soon";
 
@@ -28,7 +33,7 @@ const trustedBys: string[] = [
 export async function action({ request }) {
   const data = await request.formData();
   const email = data.get("email");
-  const leadText = "startup.dev: " + email;
+  const leadText = "0XM: " + email;
 
   let formMessage = {
     email: validateEmail(email),
@@ -39,7 +44,7 @@ export async function action({ request }) {
   const requestOptions = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ text: `0XM: ${leadText}` }),
+    body: JSON.stringify({ text: leadText }),
   };
   fetch(
     "https://hooks.slack.com/services/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",
@@ -47,13 +52,20 @@ export async function action({ request }) {
   );
 
   formMessage = { email: SUCCESS_MESSAGE };
+  await addSubmission({
+    email,
+  });
+
   return { formMessage };
 }
 
 export default function Index() {
+  let location = useLocation();
   const data = useActionData();
   const transition = useTransition();
+
   const [hasSubmitted, setHasSubmitted] = useState<boolean>(false);
+  let [visitorId, setVisitorId] = useState<number>();
 
   useEffect(() => {
     if (data?.formMessage?.email === SUCCESS_MESSAGE && !hasSubmitted) {
@@ -61,6 +73,19 @@ export default function Index() {
       toast.success("Email submitted!", { position: "bottom-center" });
     }
   }, [data?.formMessage?.email]);
+
+  useEffect(() => {
+    const fpPromise = FingerprintJS.load({
+      apiKey: "9sCCEFv95ZaGTIP6yc29",
+    });
+
+    // Get the visitor identifier when you need it.
+    fpPromise
+      .then((fp) => fp.get())
+      .then((id) => {
+        setVisitorId(id.visitorId);
+      });
+  }, [location]);
 
   return (
     <div>
@@ -133,6 +158,7 @@ export default function Index() {
           style={{}}
         >
           <Form method="post" className="flex flex-col w-full max-w-lg">
+            <input name="visitor-id" value={visitorId || ""} type="hidden" />
             <div className="w-256  p-12 pt-12 pb-12 bg-brand-dark">
               <div className="text-4xl md:text-6xl mb-12 font-bold text-white text-center">
                 Get in Touch
