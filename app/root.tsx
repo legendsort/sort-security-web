@@ -18,7 +18,7 @@ import { Toaster } from "react-hot-toast";
 
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
-  title: "0xMidnight | Founding Security",
+  title: "Startup.security | Founding Security",
   viewport: "width=device-width,initial-scale=1",
 });
 
@@ -49,10 +49,8 @@ export default function App() {
     //  - If you're using www. for your domain, make sure you include that here.
     Fathom.load("TAFNJQKE", {
       includedDomains: [
-        "zeroxmidnight.com",
-        "www.zeroxmidnight.com",
-        "0xmidnight.com",
-        "www.0xmidnight.com",
+        "startup.security",
+        "www.startup.security"
       ],
     });
     Fathom.trackPageview();

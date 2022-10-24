@@ -102,7 +102,7 @@ export default function Index() {
                   <img
                     className="w-56"
                     src="/images/logo4.png"
-                    alt="0xMidnight"
+                    alt="startup security"
                   />
                 </div>
               </div>
