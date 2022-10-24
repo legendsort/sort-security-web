@@ -110,7 +110,7 @@ export default function Index() {
                 Security stance need an upgrade?
               </div>
               <div className="text-2xl mb-10">
-                We help Series A+ companies evolve their security process and
+                We help companies evolve their security process and
                 culture
               </div>
               <div className="mb-12 md:mb-24">
