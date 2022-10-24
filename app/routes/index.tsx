@@ -1,13 +1,10 @@
 import Menu from "~/components/menu";
 import Slide from "~/components/slide";
-import { initializeApp } from "firebase/app";
 
 import { Form, useActionData, useTransition, useLocation } from "remix";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import clsx from "clsx";
-
-import { addSubmission } from "~/firebase/clientApp";
 
 import FingerprintJS from "@fingerprintjs/fingerprintjs-pro";
 
@@ -52,9 +49,9 @@ export async function action({ request }) {
   );
 
   formMessage = { email: SUCCESS_MESSAGE };
-  await addSubmission({
-    email,
-  });
+  // await addSubmission({
+  //   email,
+  // });
 
   return { formMessage };
 }
@@ -104,7 +101,7 @@ export default function Index() {
                 <div className="flex-grow">
                   <img
                     className="w-56"
-                    src="/images/logo-2.svg"
+                    src="/images/logo4.png"
                     alt="0xMidnight"
                   />
                 </div>
@@ -163,36 +160,22 @@ export default function Index() {
               <div className="text-4xl md:text-6xl mb-12 font-bold text-white text-center">
                 Get in Touch
               </div>
-              <div className="mb-4">
-                <input
-                  className={clsx(
-                    "bg-gray-100 border border-gray-200 rounded py-4 px-4 mb-3 w-full text-gray-800",
-                    {
-                      "opacity-40": hasSubmitted,
-                    }
-                  )}
-                  disabled={transition.state === "submitting" || hasSubmitted}
-                  name="email"
-                  type="text"
-                  placeholder="Your email address"
-                />
-              </div>
+
               <div className="">
-                <button
+                <a href="mailto:root@startup.security"
                   className={clsx(
-                    "bg-brand py-3 px-6 text-center text-brand-light font-bold text-lg w-full",
+                    "bg-brand py-3 px-6 text-center text-brand-light font-bold text-lg w-full block",
                     {
                       "opacity-60": hasSubmitted,
                     }
                   )}
-                  disabled={transition.state === "submitting" || hasSubmitted}
                 >
                   {transition.state === "submitting"
                     ? "...Submitting"
                     : data?.formMessage?.email
                     ? data?.formMessage?.email
-                    : "Let's Go"}
-                </button>
+                    : "Email us"}
+                </a>
               </div>
             </div>
             <div className="m-auto max-w-xl mb-8 py-8 flex">
