@@ -27,6 +27,28 @@ const trustedBys: string[] = [
   "/images/semi-trusted/logo-havo.png",
 ];
 
+const services: {
+  title: string
+  subtitle: string
+  icon: string
+}[] = [
+  {
+    title: "Initialize Security",
+    subtitle: "We kickstart your security program: Understand your attack surfaces, pick the right tools, and get started",
+    icon: "/images/icons/shield-flash-fill.svg"
+  },
+  {
+    title: "Security Engineering",
+    subtitle: "We save your engineers time by triaging bug reports, fixing vulnerabilities, and helping with secure code design.",
+    icon: "/images/icons/treasure-map-fill.svg"
+  },
+  {
+    title: "DevSecOps",
+    subtitle: "We harden and secure your infrastructure and delivery workflows without slowing your team down.",
+    icon: "/images/icons/ship-fill.svg"
+  },
+]
+
 export async function action({ request }) {
   const data = await request.formData();
   const email = data.get("email");
@@ -107,11 +129,10 @@ export default function Index() {
                 </div>
               </div>
               <div className="text-5xl lg:text-7xl max-w-3xl mb-8 leading-tight">
-                Security stance need an upgrade?
+                <span style={{color: "#D42828"}}>You built something awesome.</span> Let's make sure it's secure.
               </div>
               <div className="text-2xl mb-10">
-                We help companies evolve their security process and
-                culture
+                We help startups evolve their security tools, processes, and culture
               </div>
               <div className="mb-12 md:mb-24">
                 <button className="border border-1 border-white py-3 px-6 text-center text-white font-bold text-lg">
@@ -148,6 +169,47 @@ export default function Index() {
           </div>
         </div>
       </Slide>
+
+      <Slide>
+        <div
+            className="bg-cover h-cover bg-bottom shadow-inner shadow-i"
+            style={{
+              background: "#6E6E6E",
+              minWidth: 320,
+              boxShadow: "inset 0px 20px 10px -5px rgba(0, 0, 0, 0.15)",
+            }}
+        >
+          <div className="m-auto max-w-5xl py-24 px-3 md:px-12 relative">
+            <div className="text-2xl uppercase font-bold space-x-3 text-gray-300">
+              How we can help
+            </div>
+            <div className="my-16 text-4xl md:text-6xl font-light leading-tight" >
+              We work with growing startups to design and implement custom security programs.
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-24 py-12 items-center opacity-80 align-baseline" style={{"align-items": "baseline;"}}>
+              {services.map((s) => <div className="mb-24 md:mb-0 align-baseline justify-start ">
+                  <div className="">
+                    <img src={s.icon} width="50" alt="icon" />
+                  </div>
+                <div className="bg-gray-400 my-6 h-1 w-3/5">
+                 &nbsp;
+                </div>
+                  <div className="text-2xl mb-4">
+                    {s.title}
+                  </div>
+                  <div className="mb-4">
+                    {s.subtitle}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <div className="text-gray-700 mb-8 opacity-60">
+              Let's address your crucial threats without slowing down your roadmap
+            </div>
+          </div>
+        </div>
+      </Slide>
       <Slide>
         <div
           className=" flex justify-center items-center h-screen w-full bg-brand-dark"
@@ -157,7 +219,7 @@ export default function Index() {
           <Form method="post" className="flex flex-col w-full max-w-lg">
             <input name="visitor-id" value={visitorId || ""} type="hidden" />
             <div className="w-256  p-12 pt-12 pb-12 bg-brand-dark">
-              <div className="text-4xl md:text-6xl mb-12 font-bold text-white text-center">
+              <div className="text-4xl md:text-6xl mb-8 font-bold text-white text-center">
                 Get in Touch
               </div>
 
