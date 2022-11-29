@@ -1,3 +1,4 @@
+import type { LinksFunction, MetaFunction } from "@remix-run/node";
 import {
   Links,
   LiveReload,
@@ -6,23 +7,30 @@ import {
   Scripts,
   ScrollRestoration,
   useLocation,
-} from "remix";
+} from "@remix-run/react";
+
+import tailwindStyles from "./tailwind.css";
 
 import * as Fathom from "fathom-client";
 
-import { useEffect, useState } from "react";
-
-import type { MetaFunction, LinksFunction } from "remix";
+import { useEffect } from "react";
 
 import { Toaster } from "react-hot-toast";
 
+const title =
+  "startup.security | Security for startups who've built something awesome";
+const description = "You built something awesome. Let's make sure it's secure.";
+
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
-  title: "Startup.security | Founding Security",
+  title: title,
   viewport: "width=device-width,initial-scale=1",
+  description: description,
+  "og:title": title,
+  "og:description": description,
+  "og:image": "https://startup.security/images/logo4.png",
+  "og:url": "https://startup.security",
 });
-
-import tailwindStyles from "./tailwind.css";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: tailwindStyles },
@@ -48,10 +56,7 @@ export default function App() {
     //  - This must be an exact match of your domain.
     //  - If you're using www. for your domain, make sure you include that here.
     Fathom.load("TAFNJQKE", {
-      includedDomains: [
-        "startup.security",
-        "www.startup.security"
-      ],
+      includedDomains: ["startup.security", "www.startup.security"],
     });
     Fathom.trackPageview();
   }, []);

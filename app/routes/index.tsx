@@ -1,7 +1,13 @@
 import Menu from "~/components/menu";
 import Slide from "~/components/slide";
 
-import { Form, useActionData, useTransition, useLocation } from "remix";
+import { type ActionFunction } from "@remix-run/node";
+import {
+  Form,
+  useActionData,
+  useLocation,
+  useTransition,
+} from "@remix-run/react";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import clsx from "clsx";
@@ -28,31 +34,34 @@ const trustedBys: string[] = [
 ];
 
 const services: {
-  title: string
-  subtitle: string
-  icon: string
+  title: string;
+  subtitle: string;
+  icon: string;
 }[] = [
   {
     title: "Initialize Security",
-    subtitle: "We kickstart your security program: Understand your attack surfaces, pick the right tools, and get started",
-    icon: "/images/icons/shield-flash-fill.svg"
+    subtitle:
+      "We kickstart your security program: Understand your attack surfaces, pick the right tools, and get started",
+    icon: "/images/icons/shield-flash-fill.svg",
   },
   {
     title: "Security Engineering",
-    subtitle: "We save your engineers time by triaging bug reports, fixing vulnerabilities, and helping with secure code design.",
-    icon: "/images/icons/treasure-map-fill.svg"
+    subtitle:
+      "We save your engineers time by triaging bug reports, fixing vulnerabilities, and helping with secure code design.",
+    icon: "/images/icons/treasure-map-fill.svg",
   },
   {
     title: "DevSecOps",
-    subtitle: "We harden and secure your infrastructure and delivery workflows without slowing your team down.",
-    icon: "/images/icons/ship-fill.svg"
+    subtitle:
+      "We harden and secure your infrastructure and delivery workflows without slowing your team down.",
+    icon: "/images/icons/ship-fill.svg",
   },
-]
+];
 
-export async function action({ request }) {
+export const action: ActionFunction = async ({ request }) => {
   const data = await request.formData();
-  const email = data.get("email");
-  const leadText = "0XM: " + email;
+  const email = data.get("email")?.toString() || "";
+  const leadText = "startup.security: " + email;
 
   let formMessage = {
     email: validateEmail(email),
@@ -76,7 +85,7 @@ export async function action({ request }) {
   // });
 
   return { formMessage };
-}
+};
 
 export default function Index() {
   let location = useLocation();
@@ -84,14 +93,14 @@ export default function Index() {
   const transition = useTransition();
 
   const [hasSubmitted, setHasSubmitted] = useState<boolean>(false);
-  let [visitorId, setVisitorId] = useState<number>();
+  let [visitorId, setVisitorId] = useState<string>();
 
   useEffect(() => {
     if (data?.formMessage?.email === SUCCESS_MESSAGE && !hasSubmitted) {
       setHasSubmitted(true);
       toast.success("Email submitted!", { position: "bottom-center" });
     }
-  }, [data?.formMessage?.email]);
+  }, [data?.formMessage?.email, hasSubmitted]);
 
   useEffect(() => {
     const fpPromise = FingerprintJS.load({
@@ -129,10 +138,14 @@ export default function Index() {
                 </div>
               </div>
               <div className="text-5xl lg:text-7xl max-w-3xl mb-8 leading-tight">
-                <span style={{color: "#D42828"}}>You built something awesome.</span> Let's make sure it's secure.
+                <span style={{ color: "#D42828" }}>
+                  You built something awesome.
+                </span>{" "}
+                Let's make sure it's secure.
               </div>
               <div className="text-2xl mb-10">
-                We help startups evolve their security tools, processes, and culture
+                We help startups evolve their security tools, processes, and
+                culture
               </div>
               <div className="mb-12 md:mb-24">
                 <button className="border border-1 border-white py-3 px-6 text-center text-white font-bold text-lg">
@@ -163,6 +176,7 @@ export default function Index() {
                   key={i}
                   style={{ maxWidth: 180 }}
                   className="p-4 text-current"
+                  alt="Logo"
                 />
               ))}
             </div>
@@ -172,40 +186,43 @@ export default function Index() {
 
       <Slide>
         <div
-            className="bg-cover h-cover bg-bottom shadow-inner shadow-i"
-            style={{
-              background: "#6E6E6E",
-              minWidth: 320,
-              boxShadow: "inset 0px 20px 10px -5px rgba(0, 0, 0, 0.15)",
-            }}
+          className="bg-cover h-cover bg-bottom shadow-inner shadow-i"
+          style={{
+            background: "#6E6E6E",
+            minWidth: 320,
+            boxShadow: "inset 0px 20px 10px -5px rgba(0, 0, 0, 0.15)",
+          }}
         >
           <div className="m-auto max-w-5xl py-24 px-3 md:px-12 relative">
             <div className="text-2xl uppercase font-bold space-x-3 text-gray-300">
               How we can help
             </div>
-            <div className="my-16 text-4xl md:text-6xl font-light leading-tight" >
-              We work with growing startups to design and implement custom security programs.
+            <div className="my-16 text-4xl md:text-6xl font-light leading-tight">
+              We work with growing startups to design and implement custom
+              security programs.
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-24 py-12 items-center opacity-80 align-baseline" style={{"align-items": "baseline;"}}>
-              {services.map((s) => <div className="mb-24 md:mb-0 align-baseline justify-start ">
+            <div
+              className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-24 py-12 items-center opacity-80 align-baseline"
+              style={{ alignItems: "baseline" }}
+            >
+              {services.map((s, i) => (
+                <div
+                  key={i}
+                  className="mb-24 md:mb-0 align-baseline justify-start "
+                >
                   <div className="">
                     <img src={s.icon} width="50" alt="icon" />
                   </div>
-                <div className="bg-gray-400 my-6 h-1 w-3/5">
-                 &nbsp;
+                  <div className="bg-gray-400 my-6 h-1 w-3/5">&nbsp;</div>
+                  <div className="text-2xl mb-4">{s.title}</div>
+                  <div className="mb-4">{s.subtitle}</div>
                 </div>
-                  <div className="text-2xl mb-4">
-                    {s.title}
-                  </div>
-                  <div className="mb-4">
-                    {s.subtitle}
-                  </div>
-                </div>
-              )}
+              ))}
             </div>
 
-            <div className="text-gray-700 mb-8 opacity-60">
-              Let's address your crucial threats without slowing down your roadmap
+            <div className="text-white text-3xl mb-8 opacity-60">
+              Let's address your crucial threats without slowing down your
+              roadmap
             </div>
           </div>
         </div>
@@ -224,7 +241,8 @@ export default function Index() {
               </div>
 
               <div className="">
-                <a href="mailto:root@startup.security"
+                <a
+                  href="mailto:root@startup.security"
                   className={clsx(
                     "bg-brand py-3 px-6 text-center text-brand-light font-bold text-lg w-full block",
                     {
@@ -280,18 +298,21 @@ export default function Index() {
                 </div>
 
                 <div className="mr-4">
-                  <a href="https://twitter.com/zeroxmidnight">
-                    <img className="w-6" src="/images/twitter.png"></img>
+                  <a href="https://twitter.com/startup_sec">
+                    <img
+                      className="w-6"
+                      src="/images/twitter.png"
+                      alt="twitter"
+                    ></img>
                   </a>
                 </div>
                 <div className="mr-4">
-                  <a href="https://www.linkedin.com/company/0xmidnight">
-                    <img className="w-6" src="/images/linkedin.svg"></img>
-                  </a>
-                </div>
-                <div className="mr-4">
-                  <a href="https://discord.gg/9Hcnc9wrpk">
-                    <img className="w-6" src="/images/discord.png"></img>
+                  <a href="https://www.linkedin.com/company/startupdotsecurity/">
+                    <img
+                      className="w-6"
+                      src="/images/linkedin.svg"
+                      alt="linkedin"
+                    ></img>
                   </a>
                 </div>
               </div>
