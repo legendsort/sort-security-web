@@ -220,7 +220,7 @@ export default function Index() {
               ))}
             </div>
 
-            <div className="text-gray-700 mb-8 opacity-60">
+            <div className="text-white text-3xl mb-8 opacity-60">
               Let's address your crucial threats without slowing down your
               roadmap
             </div>
