@@ -74,10 +74,7 @@ export const action: ActionFunction = async ({ request }) => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ text: leadText }),
   };
-  fetch(
-    "https://hooks.slack.com/services/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",
-    requestOptions
-  );
+  fetch("TODO", requestOptions);
 
   formMessage = { email: SUCCESS_MESSAGE };
   // await addSubmission({

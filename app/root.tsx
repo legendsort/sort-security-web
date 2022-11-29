@@ -18,7 +18,7 @@ import { useEffect } from "react";
 import { Toaster } from "react-hot-toast";
 
 const title =
-  "startup.security | Security for startups who've built something awesome";
+  "startup.security | Security for startups who've built something awesome.";
 const description = "You built something awesome. Let's make sure it's secure.";
 
 export const meta: MetaFunction = () => ({
@@ -26,9 +26,9 @@ export const meta: MetaFunction = () => ({
   title: title,
   viewport: "width=device-width,initial-scale=1",
   description: description,
-  "og:title": title,
+  "og:title": "Security for startups who've built something awesome.",
   "og:description": description,
-  "og:image": "https://startup.security/images/logo4.png",
+  "og:image": "https://startup.security/images/ssec_meta.png",
   "og:url": "https://startup.security",
 });
 
