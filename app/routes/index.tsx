@@ -315,15 +315,6 @@ export default function Index() {
                     ></img>
                   </a>
                 </div>
-                <div className="mr-4">
-                  <a href="https://discord.gg/9Hcnc9wrpk">
-                    <img
-                      className="w-6"
-                      src="/images/discord.png"
-                      alt="discord"
-                    ></img>
-                  </a>
-                </div>
               </div>
             </div>
           </Form>
