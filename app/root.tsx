@@ -28,7 +28,7 @@ export const meta: MetaFunction = () => ({
   description: description,
   "og:title": "Security for startups who've built something awesome.",
   "og:description": description,
-  "og:image": "https://startup.security/images/ssec_meta.png",
+  "og:image": "https://startup.security/images/meta-banner.png",
   "og:url": "https://startup.security",
 });
 
