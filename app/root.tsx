@@ -17,10 +17,19 @@ import { useEffect } from "react";
 
 import { Toaster } from "react-hot-toast";
 
+const title =
+  "startup.security | Security for startups who've built something awesome";
+const description = "You built something awesome. Let's make sure it's secure.";
+
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
-  title: "Startup.security | Founding Security",
+  title: title,
   viewport: "width=device-width,initial-scale=1",
+  description: description,
+  "og:title": title,
+  "og:description": description,
+  "og:image": "https://startup.security/images/logo4.png",
+  "og:url": "https://startup.security",
 });
 
 export const links: LinksFunction = () => [
