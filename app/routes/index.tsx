@@ -298,7 +298,7 @@ export default function Index() {
                 </div>
 
                 <div className="mr-4">
-                  <a href="https://twitter.com/zeroxmidnight">
+                  <a href="https://twitter.com/startup_sec">
                     <img
                       className="w-6"
                       src="/images/twitter.png"
@@ -307,7 +307,7 @@ export default function Index() {
                   </a>
                 </div>
                 <div className="mr-4">
-                  <a href="https://www.linkedin.com/company/0xmidnight">
+                  <a href="https://www.linkedin.com/company/startupdotsecurity/">
                     <img
                       className="w-6"
                       src="/images/linkedin.svg"
