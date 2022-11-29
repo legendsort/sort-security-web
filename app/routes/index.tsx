@@ -1,7 +1,7 @@
 import Menu from "~/components/menu";
 import Slide from "~/components/slide";
 
-import { Form, useActionData, useTransition, useLocation } from "remix";
+import { Form, useActionData, useLocation, useTransition } from "@remix-run/react";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import clsx from "clsx";
