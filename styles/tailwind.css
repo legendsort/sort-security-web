@@ -4,6 +4,32 @@
 
 @import "./global.css";
 
+a.header {
+  text-decoration: none;
+  position: relative;
+  display: block;
+  z-index: 2;
+  padding-left: 0.3em;
+  padding-right: 0.3em;
+}
+
+a.header:hover::before {
+  bottom: 0;
+  height: 100%;
+}
+
+a.header::before {
+  content: "";
+  background-color: rgba(212, 40, 40, 0.9);
+  position: absolute;
+  left: 0;
+  bottom: 3px;
+  width: 100%;
+  height: 3px;
+  z-index: -1;
+  transition: all 0.3s ease-in-out;
+}
+
 @layer components {
   body {
     @apply text-gray-200 bg-brand-dark;
