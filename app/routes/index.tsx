@@ -133,6 +133,11 @@ export default function Index() {
                     alt="startup security"
                   />
                 </div>
+                <div>
+                  <a className="header" href="https://blog.startup.security">
+                    Blog
+                  </a>
+                </div>
               </div>
               <div className="text-5xl lg:text-7xl max-w-3xl mb-8 leading-tight">
                 <span style={{ color: "#D42828" }}>
@@ -217,7 +222,7 @@ export default function Index() {
               ))}
             </div>
 
-            <div className="text-white text-3xl mb-8 opacity-60">
+            <div className="text-gray-700 mb-8 opacity-60">
               Let's address your crucial threats without slowing down your
               roadmap
             </div>
