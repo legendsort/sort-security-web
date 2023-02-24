@@ -1,4 +1,4 @@
-# Welcome to STARTUP DEV
+# Welcome to my project
 
 ## Project details
 
